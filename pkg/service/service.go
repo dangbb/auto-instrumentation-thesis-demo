@@ -2,8 +2,7 @@ package service
 
 import (
 	"context"
-
-	"github.com/sirupsen/logrus"
+	logrus "github.com/helios/go-sdk/proxy-libs/helioslogrus"
 	"gorm.io/gorm"
 )
 

@@ -4,7 +4,7 @@ package pb
 
 import (
 	context "context"
-	grpc "google.golang.org/grpc"
+	grpc "github.com/helios/go-sdk/proxy-libs/heliosgrpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 )

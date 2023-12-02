@@ -11,8 +11,8 @@ import (
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
+	logger "github.com/helios/go-sdk/proxy-libs/helioslogrus"
 	_ "github.com/mattes/migrate/source/file"
-	logger "github.com/sirupsen/logrus"
 )
 
 const (
