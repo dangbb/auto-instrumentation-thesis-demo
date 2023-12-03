@@ -31,4 +31,16 @@ run-customer:
 run-audit:
 	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 GRPC_PORT=8091 MIGRATION_FOLDER=service/auditservice/migration bin/audit server
 
+run-warehouse-helios:
+	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 HTTP_PORT=8092 bin_helios/warehouse server
+
+run-interceptor-helios:
+	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 HTTP_PORT=8090 bin_helios/interceptor server
+
+run-customer-helios:
+	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 HTTP_PORT=8093 bin_helios/customer server
+
+run-audit-helios:
+	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 GRPC_PORT=8091 MIGRATION_FOLDER=service_helios/auditservice/migration bin_helios/audit server
+
 .PHONY: generate migrate-create common-env
