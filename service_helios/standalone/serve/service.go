@@ -2,14 +2,14 @@ package serve
 
 import (
 	"fmt"
-	"github.com/IBM/sarama"
-	"github.com/gin-gonic/gin"
+	gin "github.com/helios/go-sdk/proxy-libs/heliosgin"
+	http "github.com/helios/go-sdk/proxy-libs/helioshttp"
+	sarama "github.com/helios/go-sdk/proxy-libs/heliossarama"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/sirupsen/logrus"
-	"net/http"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	logrus "github.com/helios/go-sdk/proxy-libs/helioslogrus"
 	"microservice/config"
 )
 
@@ -79,7 +79,7 @@ func newKafkaConnector(config config.Config) (KafkaConnector, error) {
 	cfg.Producer.Idempotent = true
 	cfg.Producer.Return.Successes = true
 
-	cfg.Consumer.Group.Rebalance.GroupStrategies = []sarama.BalanceStrategy{sarama.NewBalanceStrategySticky()}
+	cfg.Consumer.Group.Rebalance.GroupStrategies = []sarama.BalanceStrategy{sarama.BalanceStrategySticky}
 
 	logrus.Infof("Connect to broker addr: %s", config.KafkaConfig.Broker)
 

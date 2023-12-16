@@ -12,12 +12,14 @@ build:
 	go build -o bin/customer service/customer/cmd/cmd.go
 	go build -o bin/interceptor service/interceptor/cmd/cmd.go
 	go build -o bin/warehouse service/warehouse/cmd/cmd.go
+	go build -o bin/standalone service/standalone/cmd/cmd.go
 
 build-helios:
 	go build -o bin_helios/audit service_helios/auditservice/cmd/cmd.go
 	go build -o bin_helios/customer service_helios/customer/cmd/cmd.go
 	go build -o bin_helios/interceptor service_helios/interceptor/cmd/cmd.go
 	go build -o bin_helios/warehouse service_helios/warehouse/cmd/cmd.go
+	go build -o bin_helios/standalone service_helios/standalone/cmd/cmd.go
 
 run-warehouse:
 	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 HTTP_PORT=8092 bin/warehouse server
@@ -31,6 +33,9 @@ run-customer:
 run-audit:
 	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 GRPC_PORT=8091 MIGRATION_FOLDER=service/auditservice/migration bin/audit server
 
+run-standalone:
+	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=kafka LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 HTTP_PORT=8090 GRPC_PORT=8091 bin/standalone server
+
 run-warehouse-helios:
 	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 HTTP_PORT=8092 bin_helios/warehouse server
 
@@ -42,5 +47,8 @@ run-customer-helios:
 
 run-audit-helios:
 	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=warehouse LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 GRPC_PORT=8091 MIGRATION_FOLDER=service_helios/auditservice/migration bin_helios/audit server
+
+run-standalone-helios:
+	KAFKA_BROKER=localhost:9092 KAFKA_TOPIC=kafka LOGGER_LEVEL=debug MYSQL_HOST=localhost MYSQL_PORT=3320 MYSQL_DBNAME=dbname MYSQL_USERNAME=username MYSQL_PASSWORD=password INTERCEPTOR_ADDRESS=localhost:8090 AUDIT_ADDRESS=localhost:8091 WAREHOUSE_ADDRESS=http://localhost:8092 CUSTOMER_ADDRESS=http://localhost:8093 HTTP_PORT=8090 GRPC_PORT=8091 bin_helios/standalone server
 
 .PHONY: generate migrate-create common-env

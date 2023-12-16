@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/alecthomas/kong"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/sirupsen/logrus"
+	logrus "github.com/helios/go-sdk/proxy-libs/helioslogrus"
 	"microservice/config"
-	"microservice/service/standalone/serve"
+	"microservice/service_helios/standalone/serve"
 )
 
 func main() {

@@ -10,6 +10,7 @@ require (
 	github.com/golang-migrate/migrate/v4 v4.16.2
 	github.com/golang/protobuf v1.5.3
 	github.com/gorilla/mux v1.8.0
+	github.com/helios/go-sdk/proxy-libs/heliossarama v1.37.1
 	github.com/json-iterator/go v1.1.12
 	github.com/mattes/migrate v3.0.1+incompatible
 	github.com/sirupsen/logrus v1.9.3
@@ -20,12 +21,14 @@ require (
 )
 
 require (
+	github.com/Shopify/sarama v1.37.2 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/helios/go-sdk/data-obfuscator v1.0.1 // indirect
 	github.com/helios/go-sdk/data-utils v1.0.2 // indirect
 	github.com/helios/opentelemetry-go-contrib/instrumentation/github.com/gorilla/mux/otelmux v0.1.3 // indirect
 	github.com/helios/opentelemetry-go-contrib/instrumentation/net/http/otelhttp v0.1.4 // indirect
 	github.com/ohler55/ojg v1.17.4 // indirect
+	go.opentelemetry.io/contrib/instrumentation/github.com/Shopify/sarama/otelsarama v0.37.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.36.4 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.36.4 // indirect
 	golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0 // indirect
@@ -68,7 +71,6 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
